@@ -1,5 +1,9 @@
 # Changelog praMath
 
+## [1.0.0]
+### Added
+- Move tests/ from `praHangine` repo to `praMath` repo.
+
 ## [0.1.0] - 2026-06-05
 ### Added
 - Simple math structures with methods
@@ -20,4 +24,5 @@
 
 
 [0.1.0]: https://github.com/praHand3D/praMath/releases/tag/v0.1.0
-[Unreleased]: https://github.com/praHand3D/praMath/compare/v0.1.0...HEAD
+[1.0.0]: https://github.com/praHand3D/praMath/releases/tag/v1.0.0
+[Unreleased]: https://github.com/praHand3D/praMath/compare/v1.0.0...HEAD
