@@ -8,7 +8,7 @@ struct Matrix4x4 {
 
 Matrix4x4 multiply(Matrix4x4 m1, Matrix4x4 m2);
 
-Matrix4x4 buildModelMatrix(const Transform& transform);
+Matrix4x4 buildModelMatrix(const Transform& transform, const Vec3& pivot);
 
 Matrix4x4 buildTranslationMatrix(const Vec3& position);
 Matrix4x4 buildRotationMatrix(const Vec4& rotation);

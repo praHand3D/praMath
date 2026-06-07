@@ -11,11 +11,13 @@ Matrix4x4 multiply(Matrix4x4 m1, Matrix4x4 m2) {
     return result;
 }
 
-Matrix4x4 buildModelMatrix(const Transform &transform) {
-    Matrix4x4 translation = buildTranslationMatrix(transform.position);
-    Matrix4x4 rotation    = buildRotationMatrix(transform.rotation);
-    Matrix4x4 scale       = buildScaleMatrix(transform.scale);
-    return multiply(translation, multiply(rotation, scale));
+Matrix4x4 buildModelMatrix(const Transform& transform, const Vec3& pivot) {
+    Matrix4x4 toOrigin      = buildTranslationMatrix(Vec3(-pivot.x, -pivot.y, -pivot.z));
+    Matrix4x4 fromOrigin    = buildTranslationMatrix(pivot);
+    Matrix4x4 translation   = buildTranslationMatrix(transform.position);
+    Matrix4x4 rotation      = buildRotationMatrix(transform.rotation);
+    Matrix4x4 scale         = buildScaleMatrix(transform.scale);
+    return multiply(translation, multiply(fromOrigin, multiply(rotation, multiply(scale, toOrigin))));
 }
 
 Matrix4x4 buildTranslationMatrix(const Vec3 &position) {

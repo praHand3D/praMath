@@ -1,6 +1,10 @@
 # Changelog praMath
 
-## [1.0.0]
+## [2.0.0] - 2026-06-07
+### Changed
+- Update `buildModelMatrix` function to use pivot point
+
+## [1.0.0] - 2026-06-06
 ### Added
 - Move tests/ from `praHangine` repo to `praMath` repo.
 
@@ -23,6 +27,7 @@
     - `buildScaleMatrix` - builds a scale matrix from a vector.
 
 
-[0.1.0]: https://github.com/praHand3D/praMath/releases/tag/v0.1.0
+[Unreleased]: https://github.com/praHand3D/praMath/compare/v2.0.0...HEAD
+[2.0.0]: https://github.com/praHand3D/praMath/releases/tag/v2.0.0
 [1.0.0]: https://github.com/praHand3D/praMath/releases/tag/v1.0.0
-[Unreleased]: https://github.com/praHand3D/praMath/compare/v1.0.0...HEAD
+[0.1.0]: https://github.com/praHand3D/praMath/releases/tag/v0.1.0

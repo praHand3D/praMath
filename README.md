@@ -27,7 +27,7 @@ Vec4::multiplyQuaternions(q1, q2)
 **Matrix4x4**
 ```cpp
 multiply(m1, m2)
-buildModelMatrix(transform)
+buildModelMatrix(transform, pivot)
 buildTranslationMatrix(position)
 buildRotationMatrix(rotation)
 buildScaleMatrix(scale)
