@@ -3,6 +3,10 @@
 ## [2.0.0] - 2026-06-07
 ### Changed
 - Update `buildModelMatrix` function to use pivot point
+- Update tests of blank param
+
+### Added
+- New test for `buildModelMatrix` to check pivot point
 
 ## [1.0.0] - 2026-06-06
 ### Added

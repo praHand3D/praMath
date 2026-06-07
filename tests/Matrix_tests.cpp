@@ -137,7 +137,7 @@ TEST(MATRIX_MODEL, IDENTITY_TRANSFORM) {
     t.rotation = {0, 0, 0, 1};
     t.scale    = {1, 1, 1};
 
-    Matrix4x4 m = buildModelMatrix(t);
+    Matrix4x4 m = buildModelMatrix(t, Vec3(0, 0, 0));
     EXPECT_NEAR(m.data[0][0], 1.0f, 1e-5f);
     EXPECT_NEAR(m.data[1][1], 1.0f, 1e-5f);
     EXPECT_NEAR(m.data[2][2], 1.0f, 1e-5f);
@@ -153,7 +153,7 @@ TEST(MATRIX_MODEL, TRANSLATION_ONLY) {
     t.rotation = {0, 0, 0, 1};
     t.scale    = {1, 1, 1};
 
-    Matrix4x4 m = buildModelMatrix(t);
+    Matrix4x4 m = buildModelMatrix(t, Vec3(0, 0, 0));
     EXPECT_NEAR(m.data[0][3], 4.0f, 1e-5f);
     EXPECT_NEAR(m.data[1][3], 5.0f, 1e-5f);
     EXPECT_NEAR(m.data[2][3], 6.0f, 1e-5f);
@@ -165,7 +165,7 @@ TEST(MATRIX_MODEL, SCALE_ONLY) {
     t.rotation = {0, 0, 0, 1};
     t.scale    = {2.0f, 3.0f, 4.0f};
 
-    Matrix4x4 m = buildModelMatrix(t);
+    Matrix4x4 m = buildModelMatrix(t, Vec3(0, 0, 0));
     EXPECT_NEAR(m.data[0][0], 2.0f, 1e-5f);
     EXPECT_NEAR(m.data[1][1], 3.0f, 1e-5f);
     EXPECT_NEAR(m.data[2][2], 4.0f, 1e-5f);
@@ -221,4 +221,18 @@ TEST(VEC4_QUATERNION_MULTIPLY, NOT_COMMUTATIVE) {
                      std::abs(r1.z - r2.z) > 1e-5f ||
                      std::abs(r1.w - r2.w) > 1e-5f;
     EXPECT_TRUE(different);
+}
+
+TEST(MATRIX_MODEL, PIVOT_OFFSET) {
+    Transform t;
+    t.position = {0, 0, 0};
+    t.rotation = {0, 0, 0, 1};
+    t.scale    = {1, 1, 1};
+    Vec3 pivot = {1.0f, 0, 0};
+
+    Matrix4x4 m = buildModelMatrix(t, pivot);
+    // identity rotation + scale with pivot = net zero translation
+    EXPECT_NEAR(m.data[0][3], 0.0f, 1e-5f);
+    EXPECT_NEAR(m.data[1][3], 0.0f, 1e-5f);
+    EXPECT_NEAR(m.data[2][3], 0.0f, 1e-5f);
 }
